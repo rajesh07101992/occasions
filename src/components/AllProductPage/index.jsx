@@ -3,16 +3,15 @@ import "react-input-range/lib/css/index.css";
 // import BreadcrumbCom from "../BreadcrumbCom";
 import axios from "axios";
 import Image from "next/image";
-import Link from "next/link";
+import ProductCardRowStyleOne from "../Helpers/Cards/ProductCardRowStyleOne";
 import ProductCardStyleOne from "../Helpers/Cards/ProductCardStyleOne";
 import DataIteration from "../Helpers/DataIteration";
-import Star from "../Helpers/icons/Star";
-import Layout from "../Partials/Layout";
-import ProductsFilter from "./ProductsFilter";
-import OneColumnAdsTwo from "../Home/ProductAds/OneColumnAdsTwo";
-import ProductCardRowStyleOne from "../Helpers/Cards/ProductCardRowStyleOne";
 import LoaderStyleOne from "../Helpers/Loaders/LoaderStyleOne";
 import ServeLangItem from "../Helpers/ServeLangItem";
+import Star from "../Helpers/icons/Star";
+import OneColumnAdsTwo from "../Home/ProductAds/OneColumnAdsTwo";
+import Layout from "../Partials/Layout";
+import ProductsFilter from "./ProductsFilter";
 
 export default function AllProductPage({ response, sellerInfo }) {
   const [resProducts, setProducts] = useState(null);
@@ -512,7 +511,7 @@ export default function AllProductPage({ response, sellerInfo }) {
                   className="mb-[30px]"
                   variantsFilter={variantsFilter}
                 />
-                {response.data && response.data.shopPageSidebarBanner && (
+                {/* {response.data && response.data.shopPageSidebarBanner && (
                   <div
                     style={{
                       backgroundImage: `url(${
@@ -590,7 +589,7 @@ export default function AllProductPage({ response, sellerInfo }) {
                       </div>
                     </div>
                   </div>
-                )}
+                )} */}
               </div>
 
               <div className="flex-1">

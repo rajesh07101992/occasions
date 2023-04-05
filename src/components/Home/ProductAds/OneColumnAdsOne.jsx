@@ -1,5 +1,5 @@
-import React from "react";
 import Link from "next/dist/client/link";
+import React from "react";
 import ServeLangItem from "../../Helpers/ServeLangItem";
 
 function OneColumnAdsOne({ data }) {

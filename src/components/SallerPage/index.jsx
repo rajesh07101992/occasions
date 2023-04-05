@@ -179,14 +179,14 @@ export default function SallerPage() {
                   className="mb-[30px]"
                 />
                 {/* ads */}
-                <div className="w-full hidden lg:block h-[295px] relative">
+                {/* <div className="w-full hidden lg:block h-[295px] relative">
                   <Image
                     layout="fill"
                     src={`/assets/images/ads-5.png`}
                     alt=""
                     className="w-full h-full object-contain"
                   />
-                </div>
+                </div> */}
               </div>
 
               <div className="flex-1">
