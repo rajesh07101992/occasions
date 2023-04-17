@@ -15,9 +15,9 @@ import Selectbox from "../Helpers/Selectbox";
 import isAuth from "../../../Middleware/isAuth";
 import DateFormat from "../../../utils/DateFormat";
 import settings from "../../../utils/settings";
+import ServeLangItem from "../Helpers/ServeLangItem";
 import Sslcommerce from "../Helpers/icons/Sslcommerce";
 import CheckProductIsExistsInFlashSale from "../Shared/CheckProductIsExistsInFlashSale";
-import ServeLangItem from "../Helpers/ServeLangItem";
 
 function CheakoutPage() {
   const { websiteSetup } = useSelector((state) => state.websiteSetup);
@@ -843,7 +843,7 @@ function CheakoutPage() {
             />
           </div>
           <div className="checkout-main-content w-full">
-            <div className="container-x mx-auto">
+            <div className="container mx-auto">
               <div className="w-full lg:flex lg:space-x-[30px] rtl:space-x-reverse">
                 <div className="lg:w-4/6 w-full">
                   <h1 className="sm:text-2xl text-xl text-qblack font-medium mt-5 mb-5">

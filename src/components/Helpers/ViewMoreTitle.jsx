@@ -10,7 +10,7 @@ export default function ViewMoreTitle({
 
   return (
     <div className={`section-wrapper w-full ${className || ""}`}>
-      <div className="container-x mx-auto">
+      <div className="container mx-auto">
         <div className=" section-title flex justify-center items-center mb-5">
           <div className="text-center" data-aos="fade-up">
             <Image width={200} height={50} src={Leaf} alt="Leaf" id="leaf"/>

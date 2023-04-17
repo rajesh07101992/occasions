@@ -10,13 +10,12 @@ import auth from "../../../utils/auth";
 import settings from "../../../utils/settings";
 import { fetchCart } from "../../store/Cart";
 import { fetchWishlist } from "../../store/wishlistData";
-import Star from "../Helpers/icons/Star";
-import ThinLove from "../Helpers/icons/ThinLove";
-import Selectbox from "../Helpers/Selectbox";
-import CheckProductIsExistsInFlashSale from "../Shared/CheckProductIsExistsInFlashSale";
-import ServeLangItem from "../Helpers/ServeLangItem";
 import LoginContext from "../Contexts/LoginContext";
 import messageContext from "../Contexts/MessageContext";
+import Selectbox from "../Helpers/Selectbox";
+import ServeLangItem from "../Helpers/ServeLangItem";
+import ThinLove from "../Helpers/icons/ThinLove";
+import CheckProductIsExistsInFlashSale from "../Shared/CheckProductIsExistsInFlashSale";
 
 const Redirect = () => {
   return (
@@ -383,7 +382,8 @@ export default function ProductView({
                 {/*{Array.from(Array(parseInt(product.averageRating)), () => (*/}
                 {/*  <Star />*/}
                 {/*))}*/}
-                {Array.from(Array(parseInt(product.averageRating)), () => (
+                {/* Hide Review */}
+                {/* {Array.from(Array(parseInt(product.averageRating)), () => (
                   <span key={parseInt(product.averageRating) + Math.random()}>
                     <Star />
                   </span>
@@ -402,11 +402,11 @@ export default function ProductView({
                       )
                     )}
                   </>
-                )}
+                )} */}
               </div>
-              <span className="text-[13px] font-normal text-qblack">
+              {/* <span className="text-[13px] font-normal text-qblack">
                 {parseInt(product.averageRating)} {ServeLangItem()?.Reviews}
-              </span>
+              </span> */}
             </div>
             <div
               data-aos="fade-up"
@@ -416,7 +416,7 @@ export default function ProductView({
                 suppressHydrationWarning
                 className={`main-price  font-600  ${
                   offerPrice
-                    ? "line-through text-qgray text-[15px]"
+                    ? "line-through text-qgray text-[24px]"
                     : "text-qred text-[24px]"
                 }`}
               >
@@ -432,7 +432,7 @@ export default function ProductView({
               {offerPrice && (
                 <span
                   suppressHydrationWarning
-                  className="offer-price text-qred font-600 text-[24px] ml-2"
+                  className="offer-price text-qred font-600 text-[22px] ml-2"
                 >
                   <CheckProductIsExistsInFlashSale
                     id={product.id}
@@ -458,7 +458,7 @@ export default function ProductView({
                 {more ? "See Less" : "See More"}
               </button>
             </div>
-            <div className="p-3 bg-qyellowlow flex items-center space-x-2 mb-[30px] w-fit">
+            {/* <div className="p-3 bg-qyellowlow flex items-center space-x-2 mb-[30px] w-fit">
               <span className="text-base font-bold text-qblack">
                 {ServeLangItem()?.Availability} :
               </span>
@@ -467,7 +467,7 @@ export default function ProductView({
                   ? `${product.qty} Products Available`
                   : `Products not Available`}
               </span>
-            </div>
+            </div> */}
 
             {/*<div data-aos="fade-up" className="colors mb-[30px]">*/}
             {/*  <span className="text-sm font-normal uppercase text-qgray mb-[14px] inline-block">*/}
@@ -652,7 +652,7 @@ export default function ProductView({
               </p>
             </div>
 
-            <div
+            {/* <div
               data-aos="fade-up"
               className="flex space-x-2 items-center mb-[20px] report-btn "
             >
@@ -678,7 +678,7 @@ export default function ProductView({
               >
                 {ServeLangItem()?.Report_This_Item}
               </button>
-            </div>
+            </div> */}
 
             <div
               data-aos="fade-up"

@@ -63,7 +63,7 @@ export default function Footer({ settings }) {
     <>
     
     <footer className="footer-section-wrapper wave print:hidden">
-      <div className="container-x block mx-auto pt-[0px]">
+      <div className="container block mx-auto pt-[0px]">
         <div className="w-full flex flex-col items-center mb-[50px]">
           <div data-aos="fade-up">
           <Image src={FooterLeaf} alt="Leafx"/>

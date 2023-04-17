@@ -7,10 +7,10 @@ import isAuth from "../../../Middleware/isAuth";
 import apiRequest from "../../../utils/apiRequest";
 import auth from "../../../utils/auth";
 import { fetchCompareProducts } from "../../store/compareProduct";
-import Star from "../Helpers/icons/Star";
 import PageTitle from "../Helpers/PageTitle";
-import CheckProductIsExistsInFlashSale from "../Shared/CheckProductIsExistsInFlashSale";
 import ServeLangItem from "../Helpers/ServeLangItem";
+import Star from "../Helpers/icons/Star";
+import CheckProductIsExistsInFlashSale from "../Shared/CheckProductIsExistsInFlashSale";
 function ProductsCompaire() {
   const dispatch = useDispatch();
   const [compareProducts, setProducts] = useState(null);
@@ -133,7 +133,7 @@ function ProductsCompaire() {
           title="Product Comparison"
         />
       </div>
-      <div className="container-x mx-auto">
+      <div className="container mx-auto">
         {compareProducts && compareProducts.length > 0 ? (
           <div className="w-full border border-qgray-border overflow-x-auto">
             <table className="table-wrapper w-full">

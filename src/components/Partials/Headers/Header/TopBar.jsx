@@ -1,9 +1,5 @@
-import Image from "next/image";
 import Link from "next/link";
-import Arrow from "../../../Helpers/icons/Arrow";
-import Selectbox from "../../../Helpers/Selectbox";
 // import ThinPeople from "../../../Helpers/icons/ThinPeople";
-import auth from "../../../../../utils/auth";
 import { useEffect, useState } from "react";
 import ServeLangItem from "../../../Helpers/ServeLangItem";
 import Multivendor from "../../../Shared/Multivendor";
@@ -19,7 +15,7 @@ export default function TopBar({ className, contact }) {
           className || ""
         }`}
       >
-        <div className="container-x mx-auto h-full">
+        <div className="container mx-auto h-full">
           <div className="flex justify-between items-center h-full">
             <div className="topbar-nav">
               <ul className="flex space-x-6">

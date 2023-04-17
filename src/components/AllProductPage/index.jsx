@@ -326,7 +326,7 @@ export default function AllProductPage({ response, sellerInfo }) {
     <>
       <Layout>
         <div className="products-page-wrapper w-full">
-          <div className="container-x mx-auto">
+          <div className="container mx-auto">
             {sellerInfo && (
               <div
                 data-aos="fade-right"

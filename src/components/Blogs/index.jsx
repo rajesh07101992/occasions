@@ -1,11 +1,11 @@
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 import BlogCard from "../Helpers/Cards/BlogCard";
 import DataIteration from "../Helpers/DataIteration";
-import PageTitle from "../Helpers/PageTitle";
-import Layout from "../Partials/Layout";
-import React, { useEffect, useState } from "react";
-import axios from "axios";
 import LoaderStyleOne from "../Helpers/Loaders/LoaderStyleOne";
+import PageTitle from "../Helpers/PageTitle";
 import ServeLangItem from "../Helpers/ServeLangItem";
+import Layout from "../Partials/Layout";
 
 export default function Blogs({ blogs, nextPageUrl }) {
     const [getBlogs, setGetBlogs] = useState([]);
@@ -94,7 +94,7 @@ export default function Blogs({ blogs, nextPageUrl }) {
             </div>
 
             <div className="w-full pt-[60px] bg-white">
-                <div className="container-x mx-auto">
+                <div className="container mx-auto">
                     <div className="w-full">
                         {getBlogs && getBlogs.length > 0 ? (
                             <>

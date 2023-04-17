@@ -26,7 +26,7 @@ export default function Banner({
   return (
     <>
       <div className={`w-full ${className || ""}`}>
-        <div className="container-x mx-auto">
+        <div className="container mx-auto">
           <div className="main-wrapper w-full">
             <div className="banner-card xl:flex xl:space-x-[30px] rtl:space-x-0 xl:h-[600px]  mb-[30px] ">
               <div

@@ -22,11 +22,11 @@ import isAuth from "../../../../Middleware/isAuth";
 import apiRequest from "../../../../utils/apiRequest";
 import auth from "../../../../utils/auth";
 import { fetchWishlist } from "../../../store/wishlistData";
+import ServeLangItem from "../../Helpers/ServeLangItem";
 import Multivendor from "../../Shared/Multivendor";
 import ProfileTab from "./tabs/ProfileTab";
 import ReviewTab from "./tabs/ReviewTab";
 import WishlistTab from "./tabs/WishlistTab";
-import ServeLangItem from "../../Helpers/ServeLangItem";
 
 function Profile() {
   const router = useRouter();
@@ -132,7 +132,7 @@ function Profile() {
     Multivendor() === 1 && dashBoardData && dashBoardData.is_seller;
   return (
     <div className="profile-page-wrapper w-full">
-      <div className="container-x mx-auto">
+      <div className="container mx-auto">
         <div className="w-full my-10">
           <BreadcrumbCom
             paths={[

@@ -9,7 +9,6 @@ import Cart from "../../../Cart";
 import LoginContext from "../../../Contexts/LoginContext";
 import SearchBox from "../../../Helpers/SearchBox";
 import ServeLangItem from "../../../Helpers/ServeLangItem";
-import Compair from "../../../Helpers/icons/Compair";
 import ThinBag from "../../../Helpers/icons/ThinBag";
 import ThinLove from "../../../Helpers/icons/ThinLove";
 import ThinPeople from "../../../Helpers/icons/ThinPeople";
@@ -46,7 +45,7 @@ export default function Middlebar({ className, settings }) {
   }, [cart]);
   return (
     <div className={`w-full h-[86px] bg-white ${className}`}>
-      <div className="container-x mx-auto h-full">
+      <div className="container mx-auto h-full">
         <div className="relative h-full">
           <div className="flex justify-between items-center h-full">
           <div className="w-full h-[44px]">
@@ -71,7 +70,7 @@ export default function Middlebar({ className, settings }) {
             </div>
         
             <div className="flex space-x-6 rtl:space-x-reverse items-center relative">
-              <div className="compaire relative">
+              {/* <div className="compaire relative">
                 {auth ? (
                   <Link href="/products-compaire" passHref>
                     <a rel="noopener noreferrer">
@@ -93,7 +92,7 @@ export default function Middlebar({ className, settings }) {
                 <span className="w-[18px] h-[18px] rounded-full  absolute -top-2.5 -right-2.5 flex justify-center items-center text-[9px]">
                   {compareProducts ? compareProducts.products.length : 0}
                 </span>
-              </div>
+              </div> */}
               <div className="favorite relative">
                 <Link href="/wishlist" passHref>
                   <a rel="noopener noreferrer">

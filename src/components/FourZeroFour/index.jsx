@@ -1,11 +1,10 @@
-import BreadcrumbCom from "../BreadcrumbCom";
-import Layout from "../Partials/Layout";
-import ErrorThumb from "./ErrorThumb";
-import Link from "next/link";
-import {useSelector} from "react-redux";
-import {useEffect, useState} from "react";
 import Image from "next/image";
+import Link from "next/link";
+import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
+import BreadcrumbCom from "../BreadcrumbCom";
 import ServeLangItem from "../Helpers/ServeLangItem";
+import Layout from "../Partials/Layout";
 export default function FourZeroFour() {
   const { websiteSetup } = useSelector((state) => state.websiteSetup);
   const [siteDate, setSiteDate] = useState(null);
@@ -19,7 +18,7 @@ export default function FourZeroFour() {
   return (
     <Layout>
       <div className="cart-page-wrapper w-full">
-        <div className="container-x mx-auto">
+        <div className="container mx-auto">
           <BreadcrumbCom paths={[{ name: "home", path: "/" }]} />
           <div className="empty-card-wrapper w-full">
             <div className="flex justify-center items-center w-full">

@@ -25,7 +25,7 @@ export default function Navbar({ className }) {
         className || ""
       }`}
     >
-      <div className="container-x mx-auto h-full">
+      <div className="container mx-auto h-full">
         <div className="w-full h-full relative">
           <div className="w-full h-full flex justify-center items-center">
             <div className="category-and-nav flex xl:rtl:space-x-reverse space-x-7 rtl:space-x-reverse space-x-3 items-center">

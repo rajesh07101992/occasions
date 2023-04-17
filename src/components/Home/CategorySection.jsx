@@ -9,7 +9,7 @@ function CategorySection({
                          }) {
     return (
         <div data-aos="fade-up" className="category-section-wrapper w-full">
-            <div className="container-x mx-auto pb-[60px]">
+            <div className="container mx-auto pb-[60px]">
                 <div>
                     {/*<div className="section-title flex justify-between items-center mb-5">*/}
                     {/*    <div>*/}

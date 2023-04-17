@@ -8,12 +8,12 @@ import ProductCardStyleOne from "../Helpers/Cards/ProductCardStyleOne";
 import DataIteration from "../Helpers/DataIteration";
 import InputCom from "../Helpers/InputCom";
 import LoaderStyleOne from "../Helpers/Loaders/LoaderStyleOne";
+import ServeLangItem from "../Helpers/ServeLangItem";
 import Layout from "../Partials/Layout";
 import Multivendor from "../Shared/Multivendor";
 import ProductView from "./ProductView";
 import Reviews from "./Reviews";
 import SallerInfo from "./SallerInfo";
-import ServeLangItem from "../Helpers/ServeLangItem";
 
 export default function SingleProductPage({ details }) {
   const router = useRouter();
@@ -116,7 +116,7 @@ export default function SingleProductPage({ details }) {
           <div className="single-product-wrapper w-full ">
             <div className="product-view-main-wrapper bg-white pt-[30px] w-full">
               <div className="breadcrumb-wrapper w-full ">
-                <div className="container-x mx-auto">
+                <div className="container mx-auto">
                   <BreadcrumbCom
                     paths={[
                       { name: ServeLangItem()?.home, path: "/" },
@@ -126,7 +126,7 @@ export default function SingleProductPage({ details }) {
                 </div>
               </div>
               <div className="w-full bg-white pb-[60px]">
-                <div className="container-x mx-auto">
+                <div className="container mx-auto">
                   {/*key name spelling not correct (gellery)*/}
                   <ProductView
                     product={details.product}
@@ -143,7 +143,7 @@ export default function SingleProductPage({ details }) {
               ref={reviewElement}
             >
               <div className="tab-buttons w-full mb-10 mt-5 sm:mt-0">
-                <div className="container-x mx-auto">
+                <div className="container mx-auto">
                   <ul className="flex space-x-12 ">
                     <li>
                       <span
@@ -157,7 +157,7 @@ export default function SingleProductPage({ details }) {
                         {ServeLangItem()?.Description}
                       </span>
                     </li>
-                    <li>
+                    {/* <li>
                       <span
                         onClick={() => setTab("review")}
                         className={`py-[15px] sm:text-[15px] text-sm sm:block border-b font-medium cursor-pointer ${
@@ -168,7 +168,7 @@ export default function SingleProductPage({ details }) {
                       >
                         {ServeLangItem()?.Reviews}
                       </span>
-                    </li>
+                    </li> */}
                     {Multivendor() === 1 && details.is_seller_product && (
                       <li>
                         <span
@@ -188,7 +188,7 @@ export default function SingleProductPage({ details }) {
                 <div className="w-full h-[1px] bg-[#E8E8E8] absolute left-0 sm:top-[50px] top-[36px] -z-10"></div>
               </div>
               <div className="tab-contents w-full ">
-                <div className="container-x mx-auto">
+                <div className="container mx-auto">
                   {tab === "des" && (
                     <>
                       <h6 className="text-[20px] font-bold text-qblack mb-5">
@@ -278,7 +278,7 @@ export default function SingleProductPage({ details }) {
             </div>
             {relatedProducts.length > 0 && (
               <div className="related-product w-full bg-white">
-                <div className="container-x mx-auto">
+                <div className="container mx-auto">
                   <div className="w-full py-[60px]">
                     <h1 className="sm:text-3xl text-xl font-600 text-qblacktext leading-none mb-[30px]">
                       {ServeLangItem()?.Related_Product}
