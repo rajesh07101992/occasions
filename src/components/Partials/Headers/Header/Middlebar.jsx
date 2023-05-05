@@ -12,6 +12,7 @@ import ServeLangItem from "../../../Helpers/ServeLangItem";
 import ThinBag from "../../../Helpers/icons/ThinBag";
 import ThinLove from "../../../Helpers/icons/ThinLove";
 import ThinPeople from "../../../Helpers/icons/ThinPeople";
+
 export default function Middlebar({ className, settings }) {
   const router = useRouter();
   const dispatch = useDispatch();
@@ -43,8 +44,13 @@ export default function Middlebar({ className, settings }) {
   useEffect(() => {
     cart && setCartItem(cart.cartProducts);
   }, [cart]);
+
+  // Header Class
+  const Router = useRouter();
+  const isHome = Router.pathname === '/';
+  const bgClass = isHome ? 'zIndex10' : 'bg-white';
   return (
-    <div className={`w-full h-[86px] bg-white ${className}`}>
+    <div className={`w-full h-[86px] ${bgClass} ${className}`}>
       <div className="container mx-auto h-full">
         <div className="relative h-full">
           <div className="flex justify-between items-center h-full">

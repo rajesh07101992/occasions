@@ -1,8 +1,10 @@
 import Link from "next/link";
+import { useRouter } from "next/router";
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import ServeLangItem from "../../../Helpers/ServeLangItem";
 import Multivendor from "../../../Shared/Multivendor";
+
 export default function Navbar({ className }) {
   const { websiteSetup } = useSelector((state) => state.websiteSetup);
   const categoryList = websiteSetup && websiteSetup.payload.productCategories;
@@ -19,9 +21,15 @@ export default function Navbar({ className }) {
   //   let categorySelector = document.querySelector(".category-dropdown");
   //   setHeight(categorySelector.offsetHeight);
   // }, [categoryToggle]);
+  
+  // Header Class
+  const router = useRouter();
+  const isHome = router.pathname === '/';
+  const bgClass = isHome ? 'zIndex10' : 'bg-cream border-b border-qgray-border';
+
   return (
     <div
-      className={`nav-widget-wrapper w-full  h-[60px] relative z-30  ${
+      className={`nav-widget-wrapper w-full  h-[60px] relative z-30 ${bgClass} ${
         className || ""
       }`}
     >

@@ -25,10 +25,10 @@ export default function Banner({
 
   return (
     <>
-      <div className={`w-full ${className || ""}`}>
-        <div className="container mx-auto">
+      <div className={`w-full ${className || ""} `}>
+        <div className="container-fluid mx-auto marginTop">
           <div className="main-wrapper w-full">
-            <div className="banner-card xl:flex xl:space-x-[30px] rtl:space-x-0 xl:h-[600px]  mb-[30px] ">
+            <div className="banner-card xl:flex xl:space-x-[30px] rtl:space-x-0 xl:h-[700px]  mb-[30px] ">
               <div
                 data-aos="fade-right"
                 className="xl:w-[100%] rtl:ml-[30px] ltr:ml-0 w-full xl:h-full md:h-[500px] h-[220px] xl:mb-0 mb-2"

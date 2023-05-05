@@ -46,21 +46,25 @@ export default function SearchBox({ className }) {
     }
   };
 
+  
+  const Router = useRouter();
+  const isHome = Router.pathname === '/';
+  const bgClass = isHome ? 'border_radius_30 border_dark' : 'bg-white  border-qgray-border';
   return (
     <>
       <div
-        className={`w-[250px] h-full flex items-center  border border-qgray-border bg-white  ${
-          className || ""
-        }`}
+        className={`w-[250px] h-full flex items-center  border   ${
+          className 
+        } ${bgClass}`}
       >
-        <div className="flex-1 bg-red-500 h-full">
+        <div className="flex-1  h-full">
           <div className="h-full">
             <input
               value={searchKey}
               onKeyDown={(e) => e.key === "Enter" && searchHandler()}
               onChange={(e) => setSearchkey(e.target.value)}
               type="text"
-              className="search-input"
+              className={`search-input ${isHome ? 'bg-none' : ''}`}
               placeholder={ServeLangItem()?.Search_products+"..."}
             />
           </div>
@@ -128,7 +132,7 @@ export default function SearchBox({ className }) {
         </div> */}
         <button
           onClick={searchHandler}
-          className="search-btn w-[93px]  h-full text-sm font-600 "
+          className={`search-btn w-[93px]  h-full text-sm font-600 ${isHome ? 'bg-none':''}`}
           type="button"
         >
           {ServeLangItem()?.Search}

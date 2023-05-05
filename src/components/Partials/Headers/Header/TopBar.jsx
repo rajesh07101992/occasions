@@ -1,20 +1,23 @@
 import Link from "next/link";
 // import ThinPeople from "../../../Helpers/icons/ThinPeople";
+import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import ServeLangItem from "../../../Helpers/ServeLangItem";
 import Multivendor from "../../../Shared/Multivendor";
+
 export default function TopBar({ className, contact }) {
   const [auth, setAuth] = useState(null);
   useEffect(() => {
     setAuth(JSON.parse(localStorage.getItem("auth")));
   }, []);
+
+  const router = useRouter();
+  const isHome = router.pathname === '/';
+  const bgClass = isHome ? 'zIndex10' : 'bg-white border-b border-qgray-border';
+
   return (
     <>
-      <div
-        className={`w-full bg-white h-10 border-b border-qgray-border ${
-          className || ""
-        }`}
-      >
+      <div className={`w-full h-10  ${bgClass} ${className}`}>
         <div className="container mx-auto h-full">
           <div className="flex justify-between items-center h-full">
             <div className="topbar-nav">
