@@ -800,3 +800,16 @@ body {
 }
 
 /* TODO: ===============RESPONSIVE END */
+
+.circleImage {
+  border-radius: 50%;
+  max-width: 90% !important;
+  min-width: 90% !important;
+  min-height: 90% !important;
+  max-height: 90% !important;
+}
+
+.borderCross {
+  /* border-top-right-radius: 25%;
+  border-bottom-left-radius: 25%; */
+}
