@@ -128,14 +128,14 @@ function CategorySection({
                         className="new-products md:mb-[30px] mb-[30px]"
                     />
 
-<div className="grid xl:grid-cols-3 lg:grid-cols-3 sm:grid-cols-2 grid-cols-1 xl:gap-[30px] gap-5">
+<div className="grid xl:grid-cols-4 lg:grid-cols-4 sm:grid-cols-2 grid-cols-1 xl:gap-[30px] gap-5">
                         {subCategories && subCategories.length > 0 &&
                             subCategories
                                 .slice(0, subCategories.length > 8 ? 8 : subCategories.length)
                                 .map((item, i) => (
                                     <div
                                         data-aos="fade-left"
-                                        data-aos-delay={i + "00"}
+                                        // data-aos-delay={i + "00"}
                                         key={i}
                                         className="item w-full cursor-pointer group"
                                     >
