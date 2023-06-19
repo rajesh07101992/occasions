@@ -1,7 +1,7 @@
-import React, {useEffect} from "react";
+import { useRouter } from "next/router";
+import React, { useEffect } from "react";
 import AllProductPage from "../../src/components/AllProductPage/index";
 import PageHead from "../../src/components/Helpers/PageHead";
-import {useRouter} from "next/router";
 
 export default function AllProductsPageData(data) {
   const { seoSetting } = data.data;
@@ -14,33 +14,30 @@ export default function AllProductsPageData(data) {
   return (
     <>
       {data && seoSetting && (
-          <>
-            <PageHead
-                title={`${seoSetting.seo_title}`}
-                metaDes={seoSetting.seo_description}
-            />
-            <AllProductPage response={data} />
-          </>
+        <>
+          <PageHead
+            title={`${seoSetting.seo_title}`}
+            metaDes={seoSetting.seo_description}
+          />
+          <AllProductPage response={data} />
+        </>
       )}
     </>
   );
 }
 export const getServerSideProps = async (context) => {
   try {
+    function serialize(obj) {
+      var str = [];
+      for (var p in obj)
+        if (obj.hasOwnProperty(p)) {
+          str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
+        }
+      return str.join("&");
+    }
+
     const res = await fetch(
-        `${process.env.NEXT_PUBLIC_BASE_URL}api/product?${
-            context.query.category
-                ? `category=${context.query.category}`
-                : context.query.sub_category
-                    ? `sub_category=${context.query.sub_category}`
-                    : context.query.child_category
-                        ? `child_category=${context.query.child_category}`
-                        : context.query.highlight
-                            ? `highlight=${context.query.highlight}`
-                            : context.query.brand
-                                ? `brand=${context.query.brand}`
-                                : ""
-        }`
+      `${process.env.NEXT_PUBLIC_BASE_URL}api/product?${serialize(context.query)}`
     );
     const data = await res.json();
     return {

@@ -37,12 +37,8 @@ export default function AllProductPage({ response, sellerInfo }) {
         variants: item.active_variants ? item.active_variants : [],
       };
     });
-  const [selectedVarientFilterItem, setSelectedVarientFilterItem] = useState(
-    []
-  );
-  const [selectedCategoryFilterItem, setSelectedCategoryFilterItem] = useState(
-    []
-  );
+  const [selectedVarientFilterItem, setSelectedVarientFilterItem] = useState([]);
+  const [selectedCategoryFilterItem, setSelectedCategoryFilterItem] = useState([]);
   const [selectedBrandsFilterItem, setSelectedBrandsFilterItem] = useState([]);
   const [volume, setVolume] = useState({ min: 0, max: 0 });
   const volumeHandler = (value) => {
@@ -179,29 +175,21 @@ export default function AllProductPage({ response, sellerInfo }) {
       min:
         response.data &&
         response.data.products.data &&
-        Math.min(
-          ...response.data.products.data.map((item) => parseInt(item.price))
-        ),
+        Math.min(...response.data.products.data.map((item) => parseInt(item.price))),
       max:
         response.data &&
         response.data.products.data &&
-        Math.max(
-          ...response.data.products.data.map((item) => parseInt(item.price))
-        ),
+        Math.max(...response.data.products.data.map((item) => parseInt(item.price))),
     });
   }, [response.data]);
   useEffect(() => {
     if (response.data) {
       const min =
         response.data &&
-        Math.min(
-          ...response.data.products.data.map((item) => parseInt(item.price))
-        );
+        Math.min(...response.data.products.data.map((item) => parseInt(item.price)));
       const max =
         response.data &&
-        Math.max(
-          ...response.data.products.data.map((item) => parseInt(item.price))
-        );
+        Math.max(...response.data.products.data.map((item) => parseInt(item.price)));
       const check =
         selectedVarientFilterItem.length > 0 ||
         selectedCategoryFilterItem.length > 0 ||
@@ -216,9 +204,7 @@ export default function AllProductPage({ response, sellerInfo }) {
               })
             : [];
         const brandString =
-          brandsQuery.length > 0
-            ? brandsQuery.map((value) => value + "&").join("")
-            : "";
+          brandsQuery.length > 0 ? brandsQuery.map((value) => value + "&").join("") : "";
 
         const categoryQuery =
           selectedCategoryFilterItem.length > 0
@@ -252,7 +238,7 @@ export default function AllProductPage({ response, sellerInfo }) {
             }`
           )
           .then((res) => {
-            res.data && res.data.products.data.length > 0
+            res.data && res.data.products
               ? setProducts(res.data.products.data)
               : setProducts(response.data.products.data);
           })
@@ -407,24 +393,16 @@ export default function AllProductPage({ response, sellerInfo }) {
                 </div>
 
                 <div className="saller-name lg:block hidden">
-                  <h1 className="text-[60px] font-bold">
-                    {sellerInfo.seller.shop_name}
-                  </h1>
+                  <h1 className="text-[60px] font-bold">{sellerInfo.seller.shop_name}</h1>
 
                   <div className="flex justify-center">
-                    {Array.from(
-                      Array(parseInt(sellerInfo.seller.averageRating)),
-                      () => (
-                        <span
-                          key={
-                            parseInt(sellerInfo.seller.averageRating) +
-                            Math.random()
-                          }
-                        >
-                          <Star />
-                        </span>
-                      )
-                    )}
+                    {Array.from(Array(parseInt(sellerInfo.seller.averageRating)), () => (
+                      <span
+                        key={parseInt(sellerInfo.seller.averageRating) + Math.random()}
+                      >
+                        <Star />
+                      </span>
+                    ))}
                     {parseInt(sellerInfo.seller.averageRating) < 5 && (
                       <>
                         {Array.from(
@@ -432,8 +410,7 @@ export default function AllProductPage({ response, sellerInfo }) {
                           () => (
                             <span
                               key={
-                                parseInt(sellerInfo.seller.averageRating) +
-                                Math.random()
+                                parseInt(sellerInfo.seller.averageRating) + Math.random()
                               }
                               className="text-gray-500"
                             >
@@ -462,8 +439,7 @@ export default function AllProductPage({ response, sellerInfo }) {
                         layout="fill"
                         objectFit="scale-down"
                         src={`${
-                          process.env.NEXT_PUBLIC_BASE_URL +
-                          sellerInfo.seller.logo
+                          process.env.NEXT_PUBLIC_BASE_URL + sellerInfo.seller.logo
                         }`}
                         alt="logo"
                         className="object-contain"
@@ -494,17 +470,13 @@ export default function AllProductPage({ response, sellerInfo }) {
                   priceMax={
                     response.data &&
                     Math.max(
-                      ...response.data.products.data.map((item) =>
-                        parseInt(item.price)
-                      )
+                      ...response.data.products.data.map((item) => parseInt(item.price))
                     )
                   }
                   priceMin={
                     response.data &&
                     Math.min(
-                      ...response.data.products.data.map((item) =>
-                        parseInt(item.price)
-                      )
+                      ...response.data.products.data.map((item) => parseInt(item.price))
                     )
                   }
                   volumeHandler={(value) => volumeHandler(value)}
@@ -598,14 +570,10 @@ export default function AllProductPage({ response, sellerInfo }) {
                     <div className="products-sorting w-full bg-white md:h-[70px] flex md:flex-row flex-col md:space-y-0 space-y-5 md:justify-between md:items-center p-[30px] mb-[40px]">
                       <div>
                         <p className="font-400 text-[13px]">
-                          <span className="text-qgray">
-                            {" "}
-                            {ServeLangItem()?.Showing}
-                          </span>{" "}
+                          <span className="text-qgray"> {ServeLangItem()?.Showing}</span>{" "}
                           1–
-                          {response.data.products.data.length}{" "}
-                          {ServeLangItem()?.of} {response.data.products.total}{" "}
-                          {ServeLangItem()?.results}
+                          {response.data.products.data.length} {ServeLangItem()?.of}{" "}
+                          {response.data.products.total} {ServeLangItem()?.results}
                         </p>
                       </div>
                       <div className="flex space-x-3 items-center">
@@ -616,9 +584,7 @@ export default function AllProductPage({ response, sellerInfo }) {
                           onClick={() => setCardViewStyle("col")}
                           type="button"
                           className={`hover:text-qgreen w-6 h-6 ${
-                            cardViewStyle === "col"
-                              ? "text-qgreen"
-                              : "text-qgray"
+                            cardViewStyle === "col" ? "text-qgreen" : "text-qgray"
                           }`}
                         >
                           <svg
@@ -634,9 +600,7 @@ export default function AllProductPage({ response, sellerInfo }) {
                           onClick={() => setCardViewStyle("row")}
                           type="button"
                           className={`hover:text-qgreen w-6 h-6 ${
-                            cardViewStyle === "row"
-                              ? "text-qgreen"
-                              : "text-qgray"
+                            cardViewStyle === "row" ? "text-qgreen" : "text-qgray"
                           }`}
                         >
                           <svg
@@ -711,9 +675,7 @@ export default function AllProductPage({ response, sellerInfo }) {
 
                     <div className="w-full relative text-qblack mb-[40px]">
                       {response.data && response.data.shopPageCenterBanner && (
-                        <OneColumnAdsTwo
-                          data={response.data.shopPageCenterBanner}
-                        />
+                        <OneColumnAdsTwo data={response.data.shopPageCenterBanner} />
                       )}
                     </div>
                     {products && cardViewStyle === "col" && (
