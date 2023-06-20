@@ -8,25 +8,22 @@ import IcoDashboard from "./icons/IcoDashboard";
 import IcoLogout from "./icons/IcoLogout";
 import IcoLove from "./icons/IcoLove";
 import IcoPassword from "./icons/IcoPassword";
-// import IcoPayment from "./icons/IcoPayment";
 import IcoPeople from "./icons/IcoPeople";
 import IcoReviewHand from "./icons/IcoReviewHand";
 import AddressesTab from "./tabs/AddressesTab";
 import Dashboard from "./tabs/Dashboard";
 import OrderTab from "./tabs/OrderTab";
 import PasswordTab from "./tabs/PasswordTab";
-
-// import Payment from "./tabs/Payment";
 import { useDispatch } from "react-redux";
 import isAuth from "../../../../Middleware/isAuth";
 import apiRequest from "../../../../utils/apiRequest";
 import auth from "../../../../utils/auth";
 import { fetchWishlist } from "../../../store/wishlistData";
-import ServeLangItem from "../../Helpers/ServeLangItem";
 import Multivendor from "../../Shared/Multivendor";
 import ProfileTab from "./tabs/ProfileTab";
 import ReviewTab from "./tabs/ReviewTab";
 import WishlistTab from "./tabs/WishlistTab";
+import ServeLangItem from "../../Helpers/ServeLangItem";
 
 function Profile() {
   const router = useRouter();
@@ -132,7 +129,7 @@ function Profile() {
     Multivendor() === 1 && dashBoardData && dashBoardData.is_seller;
   return (
     <div className="profile-page-wrapper w-full">
-      <div className="container mx-auto">
+      <div className="container-x mx-auto">
         <div className="w-full my-10">
           <BreadcrumbCom
             paths={[

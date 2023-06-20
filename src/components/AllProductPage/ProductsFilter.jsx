@@ -17,9 +17,6 @@ export default function ProductsFilter({
   priceMax,
   brands,
 }) {
-  const formatData = (value) => {
-    return `KD${value}`;
-  };
   return (
     <>
       <div
@@ -75,27 +72,30 @@ export default function ProductsFilter({
                   maxValue={priceMax}
                   minValue={priceMin}
                   value={volume}
-                  formatLabel={formatData}
                   onChange={volumeHandler}
                 />
               </div>
               <p className="text-xs text-qblack font-400">
-                {ServeLangItem()?.Price}: {formatData(volume.min)} -
-                {formatData(volume.max)}
+                {ServeLangItem()?.Price}: ${volume.min} - ${volume.max}
               </p>
             </>
           )}
         </div>
         <div className="filter-subject-item pb-10 border-b border-qgray-border mt-10">
           <div className="subject-title mb-[30px]">
-            <h1 className="text-black text-base font-500">{ServeLangItem()?.Brands}</h1>
+            <h1 className="text-black text-base font-500">
+              {ServeLangItem()?.Brands}
+            </h1>
           </div>
           <div className="filter-items">
             <ul>
               {brands &&
                 brands.length > 0 &&
                 brands.map((brand, i) => (
-                  <li key={i} className="item flex justify-between items-center mb-5">
+                  <li
+                    key={i}
+                    className="item flex justify-between items-center mb-5"
+                  >
                     <div className="flex space-x-[14px] rtl:space-x-reverse items-center">
                       <div>
                         <Checkbox
@@ -125,14 +125,19 @@ export default function ProductsFilter({
               className="filter-subject-item pb-10 border-b border-qgray-border mt-10"
             >
               <div className="subject-title mb-[30px]">
-                <h1 className="text-black text-base font-500">{variant.name}</h1>
+                <h1 className="text-black text-base font-500">
+                  {variant.name}
+                </h1>
               </div>
               <div className="filter-items">
                 <ul>
                   {variant &&
                     variant.active_variant_items.length > 0 &&
                     variant.active_variant_items.map((varientItem, i) => (
-                      <li key={i} className="item flex justify-between items-center mb-5">
+                      <li
+                        key={i}
+                        className="item flex justify-between items-center mb-5"
+                      >
                         <div className="flex space-x-[14px] rtl:space-x-reverse items-center">
                           <div>
                             <Checkbox

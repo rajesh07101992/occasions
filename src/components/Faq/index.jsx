@@ -1,12 +1,12 @@
-import { useState } from "react";
-import { toast } from "react-toastify";
-import apiRequest from "../../../utils/apiRequest";
 import Accodion from "../Helpers/Accodion";
 import InputCom from "../Helpers/InputCom";
-import LoaderStyleOne from "../Helpers/Loaders/LoaderStyleOne";
 import PageTitle from "../Helpers/PageTitle";
-import ServeLangItem from "../Helpers/ServeLangItem";
 import Layout from "../Partials/Layout";
+import { useState } from "react";
+import apiRequest from "../../../utils/apiRequest";
+import LoaderStyleOne from "../Helpers/Loaders/LoaderStyleOne";
+import { toast } from "react-toastify";
+import ServeLangItem from "../Helpers/ServeLangItem";
 export default function Faq({ datas }) {
   const { faqs } = datas;
   const [name, setName] = useState("");
@@ -53,7 +53,7 @@ export default function Faq({ datas }) {
         </div>
       </div>
       <div className="contact-wrapper w-full mb-10">
-        <div className="container mx-auto">
+        <div className="container-x mx-auto">
           <div className="main-wrapper w-full lg:flex lg:space-x-[30px] rtl:space-x-reverse">
             <div className="lg:w-1/2 w-full mb-10 lg:mb-0">
               <h1 className="text-qblack font-bold text-[22px] mb-4">
@@ -85,7 +85,7 @@ export default function Faq({ datas }) {
                     >
                       <path
                         d="M1 28.8027C17.6508 20.3626 63.9476 8.17089 113.509 17.8802C166.729 28.3062 341.329 42.704 353 1"
-                        stroke="#FFBB38"
+                        stroke="#FCBF49"
                         strokeWidth="2"
                         strokeLinecap="round"
                       />

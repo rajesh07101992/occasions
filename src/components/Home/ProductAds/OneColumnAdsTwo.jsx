@@ -1,9 +1,11 @@
 import React from "react";
+import Link from "next/dist/client/link";
+import ServeLangItem from "../../Helpers/ServeLangItem";
 
 function OneColumnAdsTwo({ data }) {
   return (
     <div className={`one-column-ads-one sm:h-[166px] h-[100px] w-full`}>
-      {/* <div
+      <div
         data-aos="fade-right"
         style={{
           backgroundImage: `url(${
@@ -62,13 +64,13 @@ function OneColumnAdsTwo({ data }) {
                       </svg>
                     </span>
                   </div>
-                  <div className="w-[82px] transition-all duration-300 ease-in-out group-hover:h-4 h-[0px] bg-qyellow absolute left-0 rtl:right-0 bottom-0 z-10"></div>
+                  <div className="w-[82px] transition-all duration-300 ease-in-out group-hover:h-4 h-[0px] primary-bg absolute left-0 rtl:right-0 bottom-0 z-10"></div>
                 </div>
               </a>
             </Link>
           </div>
         </div>
-      </div> */}
+      </div>
     </div>
   );
 }

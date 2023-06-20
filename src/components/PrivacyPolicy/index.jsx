@@ -1,6 +1,6 @@
 import PageTitle from "../Helpers/PageTitle";
-import ServeLangItem from "../Helpers/ServeLangItem";
 import Layout from "../Partials/Layout";
+import ServeLangItem from "../Helpers/ServeLangItem";
 
 export default function PrivacyPolicy({ datas }) {
   const { privacyPolicy } = datas;
@@ -17,7 +17,7 @@ export default function PrivacyPolicy({ datas }) {
           />
         </div>
         <div className="w-full">
-          <div className="container mx-auto">
+          <div className="container-x mx-auto">
             {privacyPolicy && (
               <div
                 dangerouslySetInnerHTML={{

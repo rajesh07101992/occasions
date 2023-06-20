@@ -41,7 +41,7 @@ export default function Footer({ settings }) {
 
   return (
     <footer className="footer-section-wrapper bg-white">
-      <div className="container block mx-auto pt-[83px]">
+      <div className="container-x block mx-auto pt-[83px]">
         <div className="lg:flex justify-between mb-[95px]">
           <div className="lg:w-4/10 w-full mb-10 lg:mb-0">
             {/* logo area */}

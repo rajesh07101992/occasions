@@ -5,6 +5,7 @@ const instance = axios.create({
   headers: {
     "content-Type": "application/json",
     Accept: "application/json",
+      'X-Requested-With': 'XMLHttpRequest'
   },
 });
 export default {
@@ -221,4 +222,9 @@ export default {
       method: "GET",
       url: `blog/${slug}`,
     }),
+    deleteUser: (token) =>
+        instance({
+            method: "DELETE",
+            url: `user/remove-account?token=${token}`,
+        }),
 };

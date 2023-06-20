@@ -1,15 +1,15 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef } from "react";
-import settings from "../../../utils/settings";
 import BlogCard from "../Helpers/Cards/BlogCard";
 import DataIteration from "../Helpers/DataIteration";
-import PageTitle from "../Helpers/PageTitle";
-import ServeLangItem from "../Helpers/ServeLangItem";
-import SimpleSlider from "../Helpers/SliderCom";
 import FontAwesomeCom from "../Helpers/icons/FontAwesomeCom";
 import Star from "../Helpers/icons/Star";
+import PageTitle from "../Helpers/PageTitle";
+import SimpleSlider from "../Helpers/SliderCom";
 import Layout from "../Partials/Layout";
+import ServeLangItem from "../Helpers/ServeLangItem";
+import settings from "../../../utils/settings";
 export default function About({ aboutData }) {
   const settingTestimonial = {
     slidesToShow:
@@ -84,7 +84,7 @@ export default function About({ aboutData }) {
         </div>
 
         <div className="aboutus-wrapper w-full py-10">
-          <div className="container mx-auto">
+          <div className="container-x mx-auto">
             <div className="w-full min-h-[665px] lg:flex lg:space-x-12 rtl:space-x-reverse items-center pb-10 lg:pb-0">
               <div className="md:w-[570px] w-full md:h-[560px] h-auto rounded overflow-hidden my-5 lg:my-0 relative">
                 <Image
@@ -194,7 +194,7 @@ export default function About({ aboutData }) {
                 <button
                   onClick={prev}
                   type="button"
-                  className="w-[48px] h-[48px] rounded-full overflow-hidden flex justify-center items-center border border-qyellow text-qyellow focus:bg-qyellow focus:text-white"
+                  className="w-[48px] h-[48px] rounded-full overflow-hidden flex justify-center items-center border primary-border primary-text"
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -214,7 +214,7 @@ export default function About({ aboutData }) {
                 <button
                   onClick={next}
                   type="button"
-                  className="w-[48px] h-[48px] rounded-full overflow-hidden flex justify-center items-center border border-qyellow text-qyellow focus:bg-qyellow focus:text-white"
+                  className="w-[48px] h-[48px] rounded-full overflow-hidden flex justify-center items-center border primary-border primary-text"
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -235,10 +235,10 @@ export default function About({ aboutData }) {
             </div>
           </div>
         </div>
-        <div className="container mx-auto my-[60px]">
+        <div className="container-x mx-auto my-[60px]">
           <div
             data-aos="fade-down"
-            className="best-services w-full bg-qyellow flex flex-col space-y-10 lg:space-y-0 lg:flex-row lg:justify-between lg:items-center lg:h-[110px] px-10 lg:py-0 py-10"
+            className="best-services w-full primary-bg flex flex-col space-y-10 lg:space-y-0 lg:flex-row lg:justify-between lg:items-center lg:h-[110px] px-10 lg:py-0 py-10"
           >
             {aboutData &&
               aboutData.services.map((item) => (
@@ -246,11 +246,11 @@ export default function About({ aboutData }) {
                   <div className="flex space-x-5 rtl:space-x-reverse items-center">
                     <div>
                       <div>
-                        <FontAwesomeCom className="w-8 h-8" icon={item.icon} />
+                        <FontAwesomeCom className="w-8 h-8 text-qblack" icon={item.icon} />
                       </div>
                     </div>
                     <div>
-                      <p className="text-black text-[15px] font-700 tracking-wide mb-1 uppercase">
+                      <p className="text-qblack text-[15px] font-700 tracking-wide mb-1 uppercase">
                         {item.title}
                       </p>
                       <p className="text-sm text-qblack line-clamp-1">
@@ -263,8 +263,8 @@ export default function About({ aboutData }) {
           </div>
         </div>
 
-        <div className="blog-post-wrapper w-full mb-[30px]">
-          <div className="container mx-auto">
+        <div className="blog-post-wrapper w-full mb-[100px]">
+          <div className="container-x mx-auto">
             <div className="blog-post-title flex justify-center items-cente mb-[30px]">
               <h1 className="text-3xl font-semibold text-qblack">
                 {ServeLangItem()?.My_Latest_News}

@@ -1,4 +1,5 @@
 import axios from "axios";
+import Image from "next/image";
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 import { toast } from "react-toastify";
@@ -9,8 +10,8 @@ import settings from "../../../utils/settings";
 import BreadcrumbCom from "../BreadcrumbCom";
 import InputCom from "../Helpers/InputCom";
 import LoaderStyleOne from "../Helpers/Loaders/LoaderStyleOne";
-import ServeLangItem from "../Helpers/ServeLangItem";
 import StarRating from "../Helpers/StarRating";
+import ServeLangItem from "../Helpers/ServeLangItem";
 function OrderCom() {
   const router = useRouter();
   const { id } = router.query;
@@ -169,7 +170,7 @@ function OrderCom() {
   return (
     <>
       <div className="order-tracking-wrapper w-full">
-        <div className="container mx-auto">
+        <div className="container-x mx-auto">
           <BreadcrumbCom
             paths={[
               { name: ServeLangItem()?.home, path: "/" },
@@ -218,7 +219,7 @@ function OrderCom() {
                       orderStatus === "Progress" ||
                       orderStatus === "Delivered" ||
                       orderStatus === "Completed"
-                        ? "bg-qyellow"
+                        ? "primary-bg"
                         : "bg-white"
                     }`}
                   ></div>
@@ -237,7 +238,7 @@ function OrderCom() {
                   <div
                     className={`lg:w-[400px] w-[100px] h-[8px] absolute ltr:lg:-left-[390px] ltr:-left-[92px] rtl:lg:-right-[390px] rtl:-right-[92px] top-[10px] z-10 ${
                       orderStatus === "Delivered" || orderStatus === "Completed"
-                        ? "bg-qyellow"
+                        ? "primary-bg"
                         : "bg-white"
                     }`}
                   ></div>
@@ -308,7 +309,7 @@ function OrderCom() {
                     <button
                       onClick={print}
                       type="button"
-                      className="w-[161px] h-[52px] rounded flex space-x-2.5 rtl:space-x-reverse items-center justify-center bg-qyellow print:hidden mt-5 sm:mt-0"
+                      className="w-[161px] h-[52px] rounded flex space-x-2.5 rtl:space-x-reverse items-center justify-center primary-bg print:hidden mt-5 sm:mt-0"
                     >
                       <span>
                         <svg
@@ -426,7 +427,7 @@ function OrderCom() {
                       <p className="text-sm text-qblack">
                         <span>{currency_icon}</span>
                         <span>
-                          {parseFloat(resData.total_amount) +
+                          {parseFloat(resData.total_amount) -
                             parseFloat(resData.shipping_cost) +
                             parseFloat(resData.coupon_coast)}
                         </span>

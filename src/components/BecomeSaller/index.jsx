@@ -2,13 +2,13 @@ import axios from "axios";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { useEffect, useRef, useState } from "react";
-import { useSelector } from "react-redux";
+import {useEffect, useRef, useState} from "react";
 import { toast } from "react-toastify";
 import isMultivendor from "../../../Middleware/isMultivendor";
 import auth from "../../../utils/auth";
 import InputCom from "../Helpers/InputCom";
 import PageTitle from "../Helpers/PageTitle";
+import {useSelector} from "react-redux";
 import ServeLangItem from "../Helpers/ServeLangItem";
 function BecomeSaller() {
   const router = useRouter();
@@ -146,7 +146,7 @@ function BecomeSaller() {
         />
       </div>
       <div className="content-wrapper w-full mb-10">
-        <div className="container mx-auto">
+        <div className="container-x mx-auto">
           <div className="w-full bg-white sm:p-[30px] p-3">
             <div className="flex xl:flex-row flex-col-reverse xl:space-x-11">
               <div className="xl:w-[824px]">
@@ -561,7 +561,7 @@ function BecomeSaller() {
             </div>
           </div>
           <div
-            className="bg-qyellow"
+            className="primary-bg"
             style={{ width: `${uploadProgress}%`, height: "2px" }}
           ></div>
         </div>

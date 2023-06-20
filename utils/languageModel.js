@@ -9,6 +9,7 @@ export default function languageModel() {
                     .replaceAll(".", " ")
                     .replaceAll("'", "")
                     .replaceAll("!", "")
+                    .replaceAll("?", "")
                     .split(" ")
                     .join("_")
             );

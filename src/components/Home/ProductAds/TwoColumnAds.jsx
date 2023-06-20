@@ -1,5 +1,5 @@
-import Link from "next/link";
 import React from "react";
+import Link from "next/link";
 import ShopNowBtn from "../../Helpers/Buttons/ShopNowBtn";
 import ServeLangItem from "../../Helpers/ServeLangItem";
 
@@ -8,7 +8,7 @@ function TwoColumnAds({ bannerOne, bannerTwo }) {
     <div
       className={`two-column-ads-section md:mb-[60px] lg:h-[295px] h-[200px] mb-[30px] w-full`}
     >
-      <div className="container mx-auto h-full">
+      <div className="container-x mx-auto h-full">
         <div
           className={`sm:flex xl:space-x-[30px] md:space-x-5 rtl:space-x-reverse items-center w-full h-full  overflow-hidden`}
         >
@@ -126,7 +126,7 @@ function TwoColumnAds({ bannerOne, bannerTwo }) {
                               </svg>
                             </span>
                           </div>
-                          <div className="w-[82px] transition-all duration-300 ease-in-out group-hover:h-4 h-[0px] bg-qyellow absolute left-0 bottom-0 z-10"></div>
+                          <div className="w-[82px] transition-all duration-300 ease-in-out group-hover:h-4 h-[0px] primary-bg absolute left-0 bottom-0 z-10"></div>
                         </div>
                       </a>
                     </Link>

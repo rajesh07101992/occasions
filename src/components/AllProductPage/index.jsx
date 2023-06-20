@@ -3,15 +3,16 @@ import "react-input-range/lib/css/index.css";
 // import BreadcrumbCom from "../BreadcrumbCom";
 import axios from "axios";
 import Image from "next/image";
-import ProductCardRowStyleOne from "../Helpers/Cards/ProductCardRowStyleOne";
+import Link from "next/link";
 import ProductCardStyleOne from "../Helpers/Cards/ProductCardStyleOne";
 import DataIteration from "../Helpers/DataIteration";
-import LoaderStyleOne from "../Helpers/Loaders/LoaderStyleOne";
-import ServeLangItem from "../Helpers/ServeLangItem";
 import Star from "../Helpers/icons/Star";
-import OneColumnAdsTwo from "../Home/ProductAds/OneColumnAdsTwo";
 import Layout from "../Partials/Layout";
 import ProductsFilter from "./ProductsFilter";
+import OneColumnAdsTwo from "../Home/ProductAds/OneColumnAdsTwo";
+import ProductCardRowStyleTwo from "../Helpers/Cards/ProductCardRowStyleTwo";
+import LoaderStyleOne from "../Helpers/Loaders/LoaderStyleOne";
+import ServeLangItem from "../Helpers/ServeLangItem";
 
 export default function AllProductPage({ response, sellerInfo }) {
   const [resProducts, setProducts] = useState(null);
@@ -37,8 +38,12 @@ export default function AllProductPage({ response, sellerInfo }) {
         variants: item.active_variants ? item.active_variants : [],
       };
     });
-  const [selectedVarientFilterItem, setSelectedVarientFilterItem] = useState([]);
-  const [selectedCategoryFilterItem, setSelectedCategoryFilterItem] = useState([]);
+  const [selectedVarientFilterItem, setSelectedVarientFilterItem] = useState(
+    []
+  );
+  const [selectedCategoryFilterItem, setSelectedCategoryFilterItem] = useState(
+    []
+  );
   const [selectedBrandsFilterItem, setSelectedBrandsFilterItem] = useState([]);
   const [volume, setVolume] = useState({ min: 0, max: 0 });
   const volumeHandler = (value) => {
@@ -175,21 +180,29 @@ export default function AllProductPage({ response, sellerInfo }) {
       min:
         response.data &&
         response.data.products.data &&
-        Math.min(...response.data.products.data.map((item) => parseInt(item.price))),
+        Math.min(
+          ...response.data.products.data.map((item) => parseInt(item.price))
+        ),
       max:
         response.data &&
         response.data.products.data &&
-        Math.max(...response.data.products.data.map((item) => parseInt(item.price))),
+        Math.max(
+          ...response.data.products.data.map((item) => parseInt(item.price))
+        ),
     });
   }, [response.data]);
   useEffect(() => {
     if (response.data) {
       const min =
         response.data &&
-        Math.min(...response.data.products.data.map((item) => parseInt(item.price)));
+        Math.min(
+          ...response.data.products.data.map((item) => parseInt(item.price))
+        );
       const max =
         response.data &&
-        Math.max(...response.data.products.data.map((item) => parseInt(item.price)));
+        Math.max(
+          ...response.data.products.data.map((item) => parseInt(item.price))
+        );
       const check =
         selectedVarientFilterItem.length > 0 ||
         selectedCategoryFilterItem.length > 0 ||
@@ -204,7 +217,9 @@ export default function AllProductPage({ response, sellerInfo }) {
               })
             : [];
         const brandString =
-          brandsQuery.length > 0 ? brandsQuery.map((value) => value + "&").join("") : "";
+          brandsQuery.length > 0
+            ? brandsQuery.map((value) => value + "&").join("")
+            : "";
 
         const categoryQuery =
           selectedCategoryFilterItem.length > 0
@@ -238,7 +253,7 @@ export default function AllProductPage({ response, sellerInfo }) {
             }`
           )
           .then((res) => {
-            res.data && res.data.products
+            res.data && res.data.products.data.length > 0
               ? setProducts(res.data.products.data)
               : setProducts(response.data.products.data);
           })
@@ -312,7 +327,7 @@ export default function AllProductPage({ response, sellerInfo }) {
     <>
       <Layout>
         <div className="products-page-wrapper w-full">
-          <div className="container mx-auto">
+          <div className="container-x mx-auto">
             {sellerInfo && (
               <div
                 data-aos="fade-right"
@@ -322,7 +337,7 @@ export default function AllProductPage({ response, sellerInfo }) {
                   backgroundSize: "cover",
                 }}
               >
-                {/*<div className="store-status w-[230px] h-[60px] bg-qyellow flex justify-end items-center rounded-full absolute top-[30px] -left-[30px]">*/}
+                {/*<div className="store-status w-[230px] h-[60px] primary-bg flex justify-end items-center rounded-full absolute top-[30px] -left-[30px]">*/}
                 {/*  <span className="text-[26px] font-600 mr-[30px]">*/}
                 {/*    {sellerInfo &&*/}
                 {/*      shopStatus(*/}
@@ -393,16 +408,24 @@ export default function AllProductPage({ response, sellerInfo }) {
                 </div>
 
                 <div className="saller-name lg:block hidden">
-                  <h1 className="text-[60px] font-bold">{sellerInfo.seller.shop_name}</h1>
+                  <h1 className="text-[60px] font-bold">
+                    {sellerInfo.seller.shop_name}
+                  </h1>
 
                   <div className="flex justify-center">
-                    {Array.from(Array(parseInt(sellerInfo.seller.averageRating)), () => (
-                      <span
-                        key={parseInt(sellerInfo.seller.averageRating) + Math.random()}
-                      >
-                        <Star />
-                      </span>
-                    ))}
+                    {Array.from(
+                      Array(parseInt(sellerInfo.seller.averageRating)),
+                      () => (
+                        <span
+                          key={
+                            parseInt(sellerInfo.seller.averageRating) +
+                            Math.random()
+                          }
+                        >
+                          <Star />
+                        </span>
+                      )
+                    )}
                     {parseInt(sellerInfo.seller.averageRating) < 5 && (
                       <>
                         {Array.from(
@@ -410,7 +433,8 @@ export default function AllProductPage({ response, sellerInfo }) {
                           () => (
                             <span
                               key={
-                                parseInt(sellerInfo.seller.averageRating) + Math.random()
+                                parseInt(sellerInfo.seller.averageRating) +
+                                Math.random()
                               }
                               className="text-gray-500"
                             >
@@ -439,7 +463,8 @@ export default function AllProductPage({ response, sellerInfo }) {
                         layout="fill"
                         objectFit="scale-down"
                         src={`${
-                          process.env.NEXT_PUBLIC_BASE_URL + sellerInfo.seller.logo
+                          process.env.NEXT_PUBLIC_BASE_URL +
+                          sellerInfo.seller.logo
                         }`}
                         alt="logo"
                         className="object-contain"
@@ -470,20 +495,24 @@ export default function AllProductPage({ response, sellerInfo }) {
                   priceMax={
                     response.data &&
                     Math.max(
-                      ...response.data.products.data.map((item) => parseInt(item.price))
+                      ...response.data.products.data.map((item) =>
+                        parseInt(item.price)
+                      )
                     )
                   }
                   priceMin={
                     response.data &&
                     Math.min(
-                      ...response.data.products.data.map((item) => parseInt(item.price))
+                      ...response.data.products.data.map((item) =>
+                        parseInt(item.price)
+                      )
                     )
                   }
                   volumeHandler={(value) => volumeHandler(value)}
                   className="mb-[30px]"
                   variantsFilter={variantsFilter}
                 />
-                {/* {response.data && response.data.shopPageSidebarBanner && (
+                {response.data && response.data.shopPageSidebarBanner && (
                   <div
                     style={{
                       backgroundImage: `url(${
@@ -554,14 +583,14 @@ export default function AllProductPage({ response, sellerInfo }) {
                                   </svg>
                                 </span>
                               </div>
-                              <div className="w-[82px] transition-all duration-300 ease-in-out group-hover:h-4 h-[2px] bg-qyellow absolute ltr:left-0 rtl:right-0 bottom-0 z-10"></div>
+                              <div className="w-[82px] transition-all duration-300 ease-in-out group-hover:h-4 h-[2px] primary-bg absolute ltr:left-0 rtl:right-0 bottom-0 z-10"></div>
                             </div>
                           </a>
                         </Link>
                       </div>
                     </div>
                   </div>
-                )} */}
+                )}
               </div>
 
               <div className="flex-1">
@@ -570,10 +599,14 @@ export default function AllProductPage({ response, sellerInfo }) {
                     <div className="products-sorting w-full bg-white md:h-[70px] flex md:flex-row flex-col md:space-y-0 space-y-5 md:justify-between md:items-center p-[30px] mb-[40px]">
                       <div>
                         <p className="font-400 text-[13px]">
-                          <span className="text-qgray"> {ServeLangItem()?.Showing}</span>{" "}
+                          <span className="text-qgray">
+                            {" "}
+                            {ServeLangItem()?.Showing}
+                          </span>{" "}
                           1–
-                          {response.data.products.data.length} {ServeLangItem()?.of}{" "}
-                          {response.data.products.total} {ServeLangItem()?.results}
+                          {response.data.products.data.length}{" "}
+                          {ServeLangItem()?.of} {response.data.products.total}{" "}
+                          {ServeLangItem()?.results}
                         </p>
                       </div>
                       <div className="flex space-x-3 items-center">
@@ -584,7 +617,9 @@ export default function AllProductPage({ response, sellerInfo }) {
                           onClick={() => setCardViewStyle("col")}
                           type="button"
                           className={`hover:text-qgreen w-6 h-6 ${
-                            cardViewStyle === "col" ? "text-qgreen" : "text-qgray"
+                            cardViewStyle === "col"
+                              ? "text-qgreen"
+                              : "text-qgray"
                           }`}
                         >
                           <svg
@@ -600,7 +635,9 @@ export default function AllProductPage({ response, sellerInfo }) {
                           onClick={() => setCardViewStyle("row")}
                           type="button"
                           className={`hover:text-qgreen w-6 h-6 ${
-                            cardViewStyle === "row" ? "text-qgreen" : "text-qgray"
+                            cardViewStyle === "row"
+                              ? "text-qgreen"
+                              : "text-qgray"
                           }`}
                         >
                           <svg
@@ -616,7 +653,7 @@ export default function AllProductPage({ response, sellerInfo }) {
                       <button
                         onClick={() => setToggle(!filterToggle)}
                         type="button"
-                        className="w-10 lg:hidden h-10 rounded flex justify-center items-center border border-qyellow text-qyellow"
+                        className="w-10 lg:hidden h-10 rounded flex justify-center items-center border border-qyellow primary-text"
                       >
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
@@ -666,7 +703,7 @@ export default function AllProductPage({ response, sellerInfo }) {
                         >
                           {({ datas }) => (
                             <div data-aos="fade-up" key={datas.id}>
-                              <ProductCardRowStyleOne datas={datas} />
+                              <ProductCardRowStyleTwo datas={datas} />
                             </div>
                           )}
                         </DataIteration>
@@ -675,7 +712,9 @@ export default function AllProductPage({ response, sellerInfo }) {
 
                     <div className="w-full relative text-qblack mb-[40px]">
                       {response.data && response.data.shopPageCenterBanner && (
-                        <OneColumnAdsTwo data={response.data.shopPageCenterBanner} />
+                        <OneColumnAdsTwo
+                          data={response.data.shopPageCenterBanner}
+                        />
                       )}
                     </div>
                     {products && cardViewStyle === "col" && (
@@ -710,7 +749,7 @@ export default function AllProductPage({ response, sellerInfo }) {
                         >
                           {({ datas }) => (
                             <div data-aos="fade-up" key={datas.id}>
-                              <ProductCardRowStyleOne datas={datas} />
+                              <ProductCardRowStyleTwo datas={datas} />
                             </div>
                           )}
                         </DataIteration>
@@ -721,10 +760,10 @@ export default function AllProductPage({ response, sellerInfo }) {
                         <button
                           onClick={nextPageHandler}
                           type="button"
-                          className="w-[180px] h-[54px] bg-qyellow rounded mt-10"
+                          className="w-[180px] h-[54px] primary-bg rounded mt-10"
                         >
                           <div className="flex justify-center w-full h-full items-center group rounded relative transition-all duration-300 ease-in-out overflow-hidden cursor-pointer">
-                            <div className="flex items-center transition-all duration-300 ease-in-out relative z-10  text-qblack hover:text-white">
+                            <div className="flex items-center transition-all duration-300 ease-in-out relative z-10  text-white hover:text-white">
                               <span className="text-sm font-600 tracking-wide leading-7 mr-2">
                                 {ServeLangItem()?.Show_more}...
                               </span>

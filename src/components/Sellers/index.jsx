@@ -1,9 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
 import isMultivendor from "../../../Middleware/isMultivendor";
+import Star from "../Helpers/icons/Star";
 import PageTitle from "../Helpers/PageTitle";
 import ServeLangItem from "../Helpers/ServeLangItem";
-import Star from "../Helpers/icons/Star";
 function Sallers({ sellersData }) {
   const { sellers } = sellersData;
   return (
@@ -19,7 +19,7 @@ function Sallers({ sellersData }) {
       </div>
 
       <div className="content-wrapper w-full mb-[60px]">
-        <div className="container mx-auto w-full">
+        <div className="container-x mx-auto w-full">
           <div className="grid lg:grid-cols-2 grid-cols-1 lg:gap-[30px] gap-5">
             {sellers &&
               sellers.data.length > 0 &&
@@ -153,7 +153,7 @@ function Sallers({ sellersData }) {
                                     <span>{ServeLangItem()?.Shop_Now}</span>
                                     <span>
                                       <svg
-                                        className={`transform rtl:rotate-180`}
+                                        className={`transform rtl:rotate-180 fill-current`}
                                         width="7"
                                         height="11"
                                         viewBox="0 0 7 11"
@@ -166,7 +166,7 @@ function Sallers({ sellersData }) {
                                           width="6.94219"
                                           height="1.54271"
                                           transform="rotate(45 1.0918 0.636719)"
-                                          fill="#1D1D1D"
+
                                         />
                                         <rect
                                           x="6.00195"
@@ -174,7 +174,7 @@ function Sallers({ sellersData }) {
                                           width="6.94219"
                                           height="1.54271"
                                           transform="rotate(135 6.00195 5.54492)"
-                                          fill="#1D1D1D"
+
                                         />
                                       </svg>
                                     </span>

@@ -57,7 +57,7 @@ export default function SallerPage() {
     <>
       <Layout>
         <div className="products-page-wrapper w-full">
-          <div className="container mx-auto">
+          <div className="container-x mx-auto">
             <div
               data-aos="fade-right"
               className="saller-info w-full mb-[40px] sm:h-[328px]  sm:flex justify-between items-center px-11 overflow-hidden relative py-10 sm:py-0"
@@ -66,7 +66,7 @@ export default function SallerPage() {
                 backgroundSize: "cover",
               }}
             >
-              <div className="store-status w-[230px] h-[60px] bg-qyellow flex justify-end items-center rounded-full absolute top-[30px] -left-[30px]">
+              <div className="store-status w-[230px] h-[60px] primary-bg flex justify-end items-center rounded-full absolute top-[30px] -left-[30px]">
                 <span className="text-[26px] font-600 mr-[30px]">
                   Store Open
                 </span>
@@ -179,14 +179,14 @@ export default function SallerPage() {
                   className="mb-[30px]"
                 />
                 {/* ads */}
-                {/* <div className="w-full hidden lg:block h-[295px] relative">
+                <div className="w-full hidden lg:block h-[295px] relative">
                   <Image
                     layout="fill"
                     src={`/assets/images/ads-5.png`}
                     alt=""
                     className="w-full h-full object-contain"
                   />
-                </div> */}
+                </div>
               </div>
 
               <div className="flex-1">
@@ -219,7 +219,7 @@ export default function SallerPage() {
                   <button
                     onClick={() => setToggle(!filterToggle)}
                     type="button"
-                    className="w-10 lg:hidden h-10 rounded flex justify-center items-center border border-qyellow text-qyellow"
+                    className="w-10 lg:hidden h-10 rounded flex justify-center items-center border border-qyellow primary-text"
                   >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"

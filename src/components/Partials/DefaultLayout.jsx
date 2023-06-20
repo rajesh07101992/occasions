@@ -32,6 +32,7 @@ export default function DefaultLayout({ children }) {
   const [fbPixexl, setFbPixel] = useState(null);
   const [load, setLoad] = useState(true);
   const [popupView, setPopupView] = useState("login");
+  const [messageWid,setMessageWid]=useState(null);
   const apiFetch = () => {
     axios
       .get(`${process.env.NEXT_PUBLIC_BASE_URL}api/website-setup`)
@@ -42,6 +43,8 @@ export default function DefaultLayout({ children }) {
           "settings",
           JSON.stringify(res.data && res.data.setting)
         );
+        localStorage.setItem("pusher", JSON.stringify(res.data && res.data.pusher_info ? res.data.pusher_info :null));
+
 
         if (res.data) {
           setgTagId(res.data.googleAnalytic.analytic_id);
@@ -54,6 +57,12 @@ export default function DefaultLayout({ children }) {
           const checkLangExists = localStorage.getItem("language");
           if (checkLangExists) {
             setLoad(false);
+            if(!messageWid){
+              if(localStorage.getItem("pusher")){
+                const pusher = JSON.parse(localStorage.getItem("pusher"));
+                setMessageWid(pusher);
+              }
+            }
           }
         }
       })
@@ -67,6 +76,13 @@ export default function DefaultLayout({ children }) {
     !websiteSetup ? apiFetch() : false;
     dispatch(fetchCart());
     dispatch(fetchCompareProducts());
+    const themeColor= JSON.parse(localStorage.getItem('settings'))
+    if(themeColor){
+      const root = document.querySelector(':root');
+      root.style.setProperty('--primary-color', `${themeColor?.theme_one}`);
+      root.style.setProperty('--secondary-color', `${themeColor?.theme_two}`);
+
+    }
     if (languageModel()) {
       setLoad(false);
     }
@@ -114,6 +130,8 @@ export default function DefaultLayout({ children }) {
   const verifyActionPopup = () => {
     setPopupView("login");
   };
+
+
   useEffect(() => {
     if(getLoginContexts.loginPopup===false){
       setPopupView("login");
@@ -243,8 +261,8 @@ export default function DefaultLayout({ children }) {
                       </div>
                     </div>
                 )}
-                {parseInt(enable_multivendor)===1&&(
-                    <MessageWidget />
+                {parseInt(enable_multivendor)===1&&messageWid&&(
+                    <MessageWidget pusher={messageWid} />
                 )}
               </>
           )}

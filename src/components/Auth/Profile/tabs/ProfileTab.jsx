@@ -7,7 +7,7 @@ import Selectbox from "../../../Helpers/Selectbox";
 // import apiRequest from "../../../../../utils/apiRequest";
 import { toast } from "react-toastify";
 import ServeLangItem from "../../../Helpers/ServeLangItem";
-import {countries} from "../../../../data/CountryCodes.json"
+import countries from "../../../../data/CountryCodes.json"
 import settings from "../../../../../utils/settings";
 export default function ProfileTab({ profileInfo, updatedProfile }) {
   const [name, setName] = useState(profileInfo.personInfo.name);
@@ -59,7 +59,7 @@ export default function ProfileTab({ profileInfo, updatedProfile }) {
   };
   useEffect(() => {
     if(!getCountries){
-      setGetCountries(countries);
+      setGetCountries(countries&&countries.countries);
     }
   }, [getCountries]);
   const getState = (value) => {
@@ -552,7 +552,7 @@ export default function ProfileTab({ profileInfo, updatedProfile }) {
                     />
                     <div
                       onClick={browseprofileImg}
-                      className="w-[32px] h-[32px] absolute bottom-7 right-0  bg-qyellow rounded-full cursor-pointer"
+                      className="w-[32px] h-[32px] absolute bottom-7 right-0  primary-bg rounded-full cursor-pointer"
                     >
                       <svg
                         width="32"
@@ -583,7 +583,7 @@ export default function ProfileTab({ profileInfo, updatedProfile }) {
             <button
               onClick={updateProfile}
               type="button"
-              className="w-[164px] h-[50px] bg-qyellow rounded text-qblack text-sm"
+              className="w-[164px] h-[50px] primary-bg rounded text-qblack text-sm"
             >
               {ServeLangItem()?.Update_Profile}
             </button>
