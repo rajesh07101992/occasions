@@ -35,7 +35,7 @@ const Redirect = () => {
 };
 
 export default function CardCustom({ datas }) {
-    // console.log(datas);
+    console.log(datas, 'gtr');
     const router = useRouter();
     const dispatch = useDispatch();
     const { wishlistData } = useSelector((state) => state.wishlistData);
@@ -115,7 +115,7 @@ export default function CardCustom({ datas }) {
         }
     };
     // cart
-    const varients = datas && datas.variants.length > 0 && datas.variants;
+    const varients = datas && datas.variants?.length > 0 && datas.variants;
     const [getFirstVarients, setFirstVarients] = useState(
         varients && varients.map((v) => v.active_variant_items[0])
     );
