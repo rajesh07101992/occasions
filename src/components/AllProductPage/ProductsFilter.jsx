@@ -1,5 +1,5 @@
-import { useRouter } from 'next/router';
-import { useEffect, useState } from 'react';
+import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
 import InputRange from "react-input-range";
 import "react-input-range/lib/css/index.css";
 import Checkbox from "../Helpers/Checkbox";
@@ -21,27 +21,25 @@ export default function ProductsFilter({
   priceMin,
   priceMax,
   brands,
-
 }) {
   const formatData = (value) => {
     return `KD${value}`;
   };
 
-  const [catName, setCatName] = useState('');
+  const [catName, setCatName] = useState("");
   const [catList, setCatList] = useState([]);
   const [visibleCatFilter, setVisibleCatFilter] = useState(true);
   const router = useRouter();
   const { pathname, query } = router;
 
   useEffect(() => {
-    if ('category' in query) {
+    if ("category" in query) {
       setVisibleCatFilter(false);
     } else {
       setVisibleCatFilter(true);
     }
     setCatName(query.category?.charAt(0).toUpperCase() + query.category?.slice(1));
     setCatList(categories);
-
   }, [categories]);
 
   function toLowerCase(str) {
@@ -49,16 +47,17 @@ export default function ProductsFilter({
       return "";
     }
     return str
-      .split('-')
-      .map(word => word.charAt(0).toLowerCase() + word.slice(1))
-      .join(' ');
+      .split("-")
+      .map((word) => word.charAt(0).toLowerCase() + word.slice(1))
+      .join(" ");
   }
-
 
   const titleCaseString = toLowerCase(catName);
   // console.log(titleCaseString);
 
-  const parentCategory = catList?.find(category => category.name.toLowerCase() === titleCaseString);
+  const parentCategory = catList?.find(
+    (category) => category.name.toLowerCase() === titleCaseString
+  );
   // let index = categories.indexOf(catName+1);
   // console.log(parentCategory.name.toLowerCase());
   // console.log(index,'cat;;ist');
@@ -69,8 +68,9 @@ export default function ProductsFilter({
   return (
     <>
       <div
-        className={`filter-widget w-full fixed lg:relative left-0 top-0 h-screen z-10 lg:h-auto overflow-y-scroll lg:overflow-y-auto bg-white px-[30px] pt-[40px] ${className || ""
-          }  ${filterToggle ? "block" : "hidden lg:block"}`}
+        className={`filter-widget w-full fixed lg:relative left-0 top-0 h-screen z-10 lg:h-auto overflow-y-scroll lg:overflow-y-auto bg-white px-[30px] pt-[40px] ${
+          className || ""
+        }  ${filterToggle ? "block" : "hidden lg:block"}`}
       >
         <div className="filter-subject-item pb-10 border-b border-qgray-border">
           <div className="subject-title mb-[30px]">
@@ -117,7 +117,9 @@ export default function ProductsFilter({
                           <Checkbox
                             id={subCat.slug}
                             name={subCat.id}
-                            handleChange={(e) => subCategoryHandler(e)}
+                            handleChange={(e) =>
+                              subCategoryHandler(e, subCat.id, catName)
+                            }
                             checked={subCat.selected}
                           />
                         </div>

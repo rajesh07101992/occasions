@@ -1,4 +1,4 @@
-import { useRouter } from 'next/router';
+import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import "react-input-range/lib/css/index.css";
 // import BreadcrumbCom from "../BreadcrumbCom";
@@ -112,43 +112,40 @@ export default function AllProductPage({ response, sellerInfo }) {
   };
 
   // Subcategory handler
-  const subCategoryHandler = (e) => {
-    const { name } = e.target;
+  const subCategoryHandler = (event, id, categoryName) => {
+    console.log(categoriesFilter, "subCategoriesFilter");
     const filterSubcategory =
-      subCategoriesFilter &&
-      subCategoriesFilter.length > 0 &&
-      subCategoriesFilter.map((varient) => {
-        return {
-          ...categories,
-          active_sub_categories:
-            categories.active_sub_categories &&
-            categories.active_sub_categories.length > 0 &&
-            categories.active_sub_categories.map((sub_cat) => {
-              if (sub_cat.name === name) {
-                return {
-                  ...sub_cat,
-                  selected: !sub_cat.selected,
-                };
+      categoriesFilter &&
+      categoriesFilter.length > 0 &&
+      categoriesFilter.map((cat) => {
+        if (cat.name.toLowerCase() == categoryName.toLowerCase()) {
+          return {
+            ...cat,
+            active_sub_categories: cat.active_sub_categories.map((sub) => {
+              if (sub.id == id) {
+                console.log(event.target.checked);
+                return { ...sub, selected: event.target.checked };
               } else {
-                return {
-                  ...sub_cat,
-                };
+                return sub;
               }
             }),
-        };
+          };
+        } else {
+          return cat;
+        }
       });
-    setSubCategoriesFilter(filterSubcategory);
-    if (selectedSubCategoryFilterItem.includes(name)) {
-      const newArr = selectedSubCategoryFilterItem.filter((like) => like !== name);
+    setCategoriesFilter(filterSubcategory);
+    if (selectedSubCategoryFilterItem.includes(id)) {
+      const newArr = selectedSubCategoryFilterItem.filter((like) => like !== id);
       setSelectedSubCategoryFilterItem(newArr);
     } else {
-      setSelectedSubCategoryFilterItem((p) => [...p, name]);
+      setSelectedSubCategoryFilterItem((p) => [...p, id]);
     }
   };
   // const subCategoryHandler=(e)=>{
   //   console.log("Clicked subcategory");
   //   const {name}= e.target;
-  //  const subCatFilter = 
+  //  const subCatFilter =
   //  subCategoriesFilter &&
   //  subCategoriesFilter.length>0 &&
   //  subCategoriesFilter.map((item)=>{
@@ -171,9 +168,6 @@ export default function AllProductPage({ response, sellerInfo }) {
   //   setSelectedSubCategoryFilterItem((p)=>[...p, name]);
   //  }
   // };
-
-
-
 
   // Brand Handler
   const brandsHandler = (e) => {
@@ -211,13 +205,16 @@ export default function AllProductPage({ response, sellerInfo }) {
 
     setCategoriesFilter(
       response.data &&
-      response.data.categories.length > 0 &&
-      response.data.categories.map((item) => {
-        return {
-          ...item,
-          selected: false,
-        };
-      })
+        response.data.categories.length > 0 &&
+        response.data.categories.map((item) => {
+          return {
+            ...item,
+            active_sub_categories: item.active_sub_categories.map((sub) => {
+              return { ...sub, selected: false };
+            }),
+            selected: false,
+          };
+        })
     );
 
     // setSubCategoriesFilter(
@@ -253,31 +250,31 @@ export default function AllProductPage({ response, sellerInfo }) {
 
     setVariantsFilter(
       response.data &&
-      response.data.activeVariants.length > 0 &&
-      response.data.activeVariants.map((varient) => {
-        return {
-          ...varient,
-          active_variant_items:
-            varient.active_variant_items &&
-            varient.active_variant_items.length > 0 &&
-            varient.active_variant_items.map((variant_item) => {
-              return {
-                ...variant_item,
-                selected: false,
-              };
-            }),
-        };
-      })
+        response.data.activeVariants.length > 0 &&
+        response.data.activeVariants.map((varient) => {
+          return {
+            ...varient,
+            active_variant_items:
+              varient.active_variant_items &&
+              varient.active_variant_items.length > 0 &&
+              varient.active_variant_items.map((variant_item) => {
+                return {
+                  ...variant_item,
+                  selected: false,
+                };
+              }),
+          };
+        })
     );
     setBrands(
       response.data &&
-      response.data.brands.length > 0 &&
-      response.data.brands.map((item) => {
-        return {
-          ...item,
-          selected: false,
-        };
-      })
+        response.data.brands.length > 0 &&
+        response.data.brands.map((item) => {
+          return {
+            ...item,
+            selected: false,
+          };
+        })
     );
     setVolume({
       min:
@@ -310,8 +307,8 @@ export default function AllProductPage({ response, sellerInfo }) {
         const brandsQuery =
           selectedBrandsFilterItem.length > 0
             ? selectedBrandsFilterItem.map((value) => {
-              return `brands[]=${value}`;
-            })
+                return `brands[]=${value}`;
+              })
             : [];
         const brandString =
           brandsQuery.length > 0 ? brandsQuery.map((value) => value + "&").join("") : "";
@@ -319,8 +316,8 @@ export default function AllProductPage({ response, sellerInfo }) {
         const categoryQuery =
           selectedCategoryFilterItem.length > 0
             ? selectedCategoryFilterItem.map((value) => {
-              return `categories[]=${value}`;
-            })
+                return `categories[]=${value}`;
+              })
             : [];
         const categoryString =
           categoryQuery.length > 0
@@ -331,20 +328,20 @@ export default function AllProductPage({ response, sellerInfo }) {
         const subCategoryQuery =
           selectedSubCategoryFilterItem.length > 0
             ? selectedSubCategoryFilterItem.map((value) => {
-              return `sub_category[]=${value}`;
-            })
+                return `sub_categories[]=${value}`;
+              })
             : [];
         const subCategoryString =
           subCategoryQuery.length > 0
             ? subCategoryQuery.map((value) => value + "&").join("")
             : "";
         // End
-
+        console.log(subCategoryString, "subCategoryQuerysubCategoryQuery");
         const variantQuery =
           selectedVarientFilterItem.length > 0
             ? selectedVarientFilterItem.map((value) => {
-              return `variantItems[]=${value}`;
-            })
+                return `variantItems[]=${value}`;
+              })
             : [];
         const variantString =
           variantQuery.length > 0
@@ -352,10 +349,13 @@ export default function AllProductPage({ response, sellerInfo }) {
             : "";
         axios
           .get(
-            `${process.env.NEXT_PUBLIC_BASE_URL}api/search-product?${brandString && brandString
-            }${categoryString && categoryString}${variantString && variantString
-            }min_price=${volume.min}&max_price=${volume.max}${sellerInfo ? `&shop_name=${sellerInfo.seller.slug}` : ""
-            }`
+            `${process.env.NEXT_PUBLIC_BASE_URL}api/search-product?${
+              brandString && brandString
+            }${categoryString && categoryString}${
+              subCategoryString && subCategoryString
+            }${variantString && variantString}min_price=${volume.min}&max_price=${
+              volume.max
+            }${sellerInfo ? `&shop_name=${sellerInfo.seller.slug}` : ""}`
           )
           .then((res) => {
             res.data && res.data.products
@@ -559,8 +559,9 @@ export default function AllProductPage({ response, sellerInfo }) {
                       <Image
                         layout="fill"
                         objectFit="scale-down"
-                        src={`${process.env.NEXT_PUBLIC_BASE_URL + sellerInfo.seller.logo
-                          }`}
+                        src={`${
+                          process.env.NEXT_PUBLIC_BASE_URL + sellerInfo.seller.logo
+                        }`}
                         alt="logo"
                         className="object-contain"
                       />
@@ -705,8 +706,9 @@ export default function AllProductPage({ response, sellerInfo }) {
                         <button
                           onClick={() => setCardViewStyle("col")}
                           type="button"
-                          className={`hover:text-qgreen w-6 h-6 ${cardViewStyle === "col" ? "text-qgreen" : "text-qgray"
-                            }`}
+                          className={`hover:text-qgreen w-6 h-6 ${
+                            cardViewStyle === "col" ? "text-qgreen" : "text-qgray"
+                          }`}
                         >
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
@@ -720,8 +722,9 @@ export default function AllProductPage({ response, sellerInfo }) {
                         <button
                           onClick={() => setCardViewStyle("row")}
                           type="button"
-                          className={`hover:text-qgreen w-6 h-6 ${cardViewStyle === "row" ? "text-qgreen" : "text-qgray"
-                            }`}
+                          className={`hover:text-qgreen w-6 h-6 ${
+                            cardViewStyle === "row" ? "text-qgreen" : "text-qgray"
+                          }`}
                         >
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
