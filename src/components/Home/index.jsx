@@ -154,7 +154,8 @@ export default function Home({ homepageData }) {
                   )
                   : []
               }
-              sectionTitle={sectionTitles && sectionTitles.Popular_Category}
+              // sectionTitle={sectionTitles && sectionTitles.Popular_Category}
+              sectionTitle='Popular Products'
               seeMoreUrl={`/products?highlight=popular_category`}
               className="new-products md:mb-[30px] mb-[30px]"
             />
