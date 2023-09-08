@@ -16,7 +16,7 @@ function CategorySection({
             "icon": "fas fa-anchor",
             "image": "uploads/custom-images/birthday.webp"
         },
-         {
+        {
             "id": 2,
             "name": "Get Well",
             "slug": "get-well",
@@ -76,14 +76,14 @@ function CategorySection({
 
                         className="new-products md:mb-[30px] mb-[30px]"
                     />
-                    <div className="grid xl:grid-cols-3 lg:grid-cols-3 sm:grid-cols-2 grid-cols-1 xl:gap-[30px] gap-5">
+                    <div className="grid xl:grid-cols-6 lg:grid-cols-6 sm:grid-cols-6 grid-cols-1 xl:gap-[30px] gap-5">
                         {categories && categories.length > 0 &&
                             categories
                                 .slice(0, categories.length > 8 ? 8 : categories.length)
                                 .map((item, i) => (
                                     <div
                                         data-aos="fade-left"
-                                        data-aos-delay={i + "00"}
+                                        data-aos-delay={i * 2 + "00"}
                                         key={i}
                                         className="item w-full cursor-pointer group"
                                     >
@@ -96,7 +96,7 @@ function CategorySection({
                                         >
                                             <a rel="noopener noreferrer">
                                                 <div
-                                                    className="w-full h-[400px] relative rounded bg-white flex justify-center items-center">
+                                                    className="w-full h-[200px] relative rounded bg-white flex justify-center items-center">
                                                     <div
                                                         className="w-full h-full relative transform scale-100 group-hover:scale-110 transition duration-300 ease-in-out">
                                                         <Image
@@ -121,14 +121,14 @@ function CategorySection({
                     </div>
 
                     <div className="pb-[60px]"></div>
-                    <SectionStyleThree
+                    {/* <SectionStyleThree
 
                         sectionTitle='Shop by Flower Bouquet'
 
                         className="new-products md:mb-[30px] mb-[30px]"
-                    />
+                    /> */}
 
-<div className="grid xl:grid-cols-4 lg:grid-cols-4 sm:grid-cols-2 grid-cols-1 xl:gap-[30px] gap-5">
+                    {/* <div className="grid xl:grid-cols-4 lg:grid-cols-4 sm:grid-cols-2 grid-cols-1 xl:gap-[30px] gap-5">
                         {subCategories && subCategories.length > 0 &&
                             subCategories
                                 .slice(0, subCategories.length > 8 ? 8 : subCategories.length)
@@ -169,7 +169,7 @@ function CategorySection({
                                         </Link>
                                     </div>
                                 ))}
-                    </div>                                   
+                    </div> */}
                 </div>
             </div>
         </div>

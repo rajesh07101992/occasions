@@ -11,7 +11,7 @@ export default function Banner({
   const settingBanner = {
     infinite: true,
     dots: true,
-    autoplay: false,
+    autoplay: true,
     arrows: false,
     fade: true,
   };

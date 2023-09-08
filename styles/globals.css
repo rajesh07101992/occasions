@@ -516,7 +516,8 @@ body {
 }
 
 .nav-widget-wrapper .become-seller-btn {
-  @apply text-white bg-qblack;
+  /* @apply text-white bg-qblack; */
+  border: 1px solid #000;
 }
 
 .nav-widget-wrapper .category-dropdown .categories-list .category-item {
@@ -803,10 +804,10 @@ body {
 
 .circleImage {
   border-radius: 50%;
-  max-width: 90% !important;
+  /* max-width: 90% !important;
   min-width: 90% !important;
   min-height: 90% !important;
-  max-height: 90% !important;
+  max-height: 90% !important; */
 }
 
 .borderCross {
