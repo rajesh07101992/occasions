@@ -98,7 +98,7 @@ function CategorySection({
                                                 <div
                                                     className="w-full h-[200px] relative rounded bg-white flex justify-center items-center">
                                                     <div
-                                                        className="w-full h-full relative transform scale-100 group-hover:scale-110 transition duration-300 ease-in-out">
+                                                        className=" h-full w-[200px] relative transform scale-100 group-hover:scale-110 transition duration-300 ease-in-out">
                                                         <Image
                                                             layout="fill"
                                                             // objectFit="scale-down"
